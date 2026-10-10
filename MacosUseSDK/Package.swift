@@ -1,0 +1,101 @@
+// swift-tools-version: 6.0
+// The swift-tools-version declares the minimum version of Swift required to build this package.
+
+import PackageDescription
+
+let package = Package(
+    name: "MacosUseSDK",
+    platforms: [
+        .macOS(.v12)
+    ],
+    products: [
+        // Products define the executables and libraries a package produces, making them visible to other packages.
+        .library(
+            name: "MacosUseSDK",
+            targets: ["MacosUseSDK"]),
+        .executable(
+            name: "TraversalTool",
+            targets: ["TraversalTool"]),
+        .executable(
+            name: "HighlightTraversalTool",
+            targets: ["HighlightTraversalTool"]),
+        .executable(
+            name: "InputControllerTool",
+            targets: ["InputControllerTool"]),
+        .executable(
+            name: "VisualInputTool",
+            targets: ["VisualInputTool"]),
+        .executable(
+            name: "AppOpenerTool",
+            targets: ["AppOpenerTool"]),
+        .executable(
+            name: "ActionTool",
+            targets: ["ActionTool"]),
+        .executable(
+            name: "OutputControllerTool",
+            targets: ["OutputControllerTool"]),
+        .executable(
+            name: "FileSearchTool",
+            targets: ["FileSearchTool"]),
+    ],
+    dependencies: [
+        // Add any external package dependencies here later if needed
+    ],
+    targets: [
+        // Targets are the basic building blocks of a package, defining a module or a test suite.
+        // Targets can depend on other targets in this package and products from dependencies.
+        .target(
+            name: "MacosUseSDK",
+            dependencies: [],
+            linkerSettings: [
+                .linkedFramework("AppKit"),
+                .linkedFramework("ApplicationServices"),
+            ]
+        ),
+        .target(
+            name: "MacosUseFileSearch",
+            dependencies: [],
+            linkerSettings: [
+                .linkedFramework("AppKit"),
+            ]
+        ),
+        .executableTarget(
+            name: "TraversalTool",
+            dependencies: ["MacosUseSDK"]
+        ),
+        .executableTarget(
+            name: "HighlightTraversalTool",
+            dependencies: [
+                "MacosUseSDK",
+            ]
+        ),
+        .executableTarget(
+            name: "InputControllerTool",
+            dependencies: ["MacosUseSDK"]
+        ),
+        .executableTarget(
+            name: "VisualInputTool",
+            dependencies: ["MacosUseSDK"]
+        ),
+        .executableTarget(
+            name: "AppOpenerTool",
+            dependencies: ["MacosUseSDK"]
+        ),
+        .executableTarget(
+            name: "ActionTool",
+            dependencies: ["MacosUseSDK"]
+        ),
+        .executableTarget(
+            name: "OutputControllerTool",
+            dependencies: ["MacosUseSDK"]
+        ),
+        .executableTarget(
+            name: "FileSearchTool",
+            dependencies: ["MacosUseFileSearch"]
+        ),
+        .testTarget(
+            name: "MacosUseSDKTests",
+            dependencies: ["MacosUseSDK"]
+        ),
+    ]
+)

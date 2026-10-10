@@ -1,0 +1,4 @@
+# ScreenCommander MCP canonical URL (not a secret)
+# Protocol: SSE/HTTP on loopback only
+URL: http://127.0.0.1:7860/mcp
+NOTE: Local MCP currently runs from ~/Code/ScreenCommander (com.screencommander.mcp, launchd gui/501, enabled).
